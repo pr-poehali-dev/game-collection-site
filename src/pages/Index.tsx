@@ -22,6 +22,10 @@ interface Game {
   image: string;
   description: string;
   rating: number;
+  fullDescription: string;
+  developer: string;
+  releaseDate: string;
+  screenshots: string[];
 }
 
 const GAMES: Game[] = [
@@ -31,6 +35,14 @@ const GAMES: Game[] = [
     genre: 'Шутер',
     image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&h=300&fit=crop',
     description: 'Легендарный тактический шутер',
+    fullDescription: 'Counter-Strike 2 — это легендарный тактический многопользовательский шутер от первого лица. Две команды сражаются друг против друга: террористы и контртеррористы. Обе стороны пытаются ликвидировать друг друга, а также выполнить отдельные цели карты. Террористы, в зависимости от режима игры, должны заложить бомбу или охранять заложников, а контртеррористы должны предотвратить заложение бомбы, разминировать её или спасти заложников.',
+    developer: 'Valve Corporation',
+    releaseDate: '27.09.2023',
+    screenshots: [
+      'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?w=800&h=450&fit=crop'
+    ],
     rating: 4.9
   },
   {
@@ -39,6 +51,14 @@ const GAMES: Game[] = [
     genre: 'MOBA',
     image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop',
     description: 'Командная стратегия в реальном времени',
+    fullDescription: 'Dota 2 — многопользовательская командная компьютерная игра в жанре MOBA. Игра является продолжением DotA — пользовательской карты-модификации для игры Warcraft III. Две команды по пять игроков сражаются друг с другом, защищая свою базу и пытаясь уничтожить базу противника.',
+    developer: 'Valve Corporation',
+    releaseDate: '09.07.2013',
+    screenshots: [
+      'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800&h=450&fit=crop'
+    ],
     rating: 4.8
   },
   {
@@ -47,6 +67,14 @@ const GAMES: Game[] = [
     genre: 'Экшен',
     image: 'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&h=300&fit=crop',
     description: 'Массовые танковые сражения',
+    fullDescription: 'World of Tanks — массовая многопользовательская онлайн-игра, посвящённая бронированной технике середины XX века. Игрокам предстоит управлять легендарными танками различных наций и участвовать в масштабных командных сражениях. Прокачивайте технику, разрабатывайте тактику и доминируйте на полях сражений.',
+    developer: 'Wargaming',
+    releaseDate: '12.08.2010',
+    screenshots: [
+      'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?w=800&h=450&fit=crop'
+    ],
     rating: 4.7
   },
   {
@@ -55,6 +83,14 @@ const GAMES: Game[] = [
     genre: 'Шутер',
     image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=300&fit=crop',
     description: 'Хардкорный тактический шутер',
+    fullDescription: 'Escape from Tarkov — хардкорный многопользовательский шутер от первого лица с элементами RPG и симулятора выживания. Игрокам предстоит выживать в вымышленном российском городе Тарков, собирать добычу и сражаться с другими игроками и NPC. Реалистичная баллистика, система ранений и необходимость тщательной подготовки к каждому рейду делают игру уникальной в своём жанре.',
+    developer: 'Battlestate Games',
+    releaseDate: '27.07.2017',
+    screenshots: [
+      'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800&h=450&fit=crop'
+    ],
     rating: 4.6
   },
   {
@@ -63,6 +99,14 @@ const GAMES: Game[] = [
     genre: 'Симулятор',
     image: 'https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?w=400&h=300&fit=crop',
     description: 'Военная авиация и танки',
+    fullDescription: 'War Thunder — многопользовательская игра, посвящённая авиации, бронетехнике и флоту периода Второй мировой войны и послевоенного времени. Игра включает более 2000 единиц техники из разных стран и эпох. Реалистичная физика повреждений, различные режимы игры от аркады до симулятора и возможность сражаться на суше, в воздухе и на море делают War Thunder уникальным военным симулятором.',
+    developer: 'Gaijin Entertainment',
+    releaseDate: '15.08.2013',
+    screenshots: [
+      'https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&h=450&fit=crop'
+    ],
     rating: 4.5
   },
   {
@@ -71,6 +115,14 @@ const GAMES: Game[] = [
     genre: 'RPG',
     image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&h=300&fit=crop',
     description: 'Постапокалиптическое приключение',
+    fullDescription: 'Metro Exodus — постапокалиптический шутер от первого лица с элементами survival horror и RPG, основанный на романах Дмитрия Глуховского. Артём и группа выживших отправляются в путешествие по России на паровозе "Аврора" в поисках нового дома. Игра сочетает линейные уровни с открытыми локациями, предлагая уникальную атмосферу и глубокий сюжет.',
+    developer: '4A Games',
+    releaseDate: '15.02.2019',
+    screenshots: [
+      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&h=450&fit=crop'
+    ],
     rating: 4.8
   },
   {
@@ -79,6 +131,14 @@ const GAMES: Game[] = [
     genre: 'Экшен',
     image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&h=300&fit=crop',
     description: 'Альтернативная история СССР',
+    fullDescription: 'Atomic Heart — экшен от первого лица в альтернативной реальности СССР. События разворачиваются в утопическом мире, где передовые технологии и роботизация достигли невероятных высот, но что-то пошло не так. Игроку предстоит разобраться в тайнах секретного объекта №3826 и остановить восстание машин, используя уникальное оружие и полимерную перчатку.',
+    developer: 'Mundfish',
+    releaseDate: '21.02.2023',
+    screenshots: [
+      'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=450&fit=crop'
+    ],
     rating: 4.4
   },
   {
@@ -87,6 +147,14 @@ const GAMES: Game[] = [
     genre: 'RPG',
     image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop',
     description: 'Выживание в Зоне',
+    fullDescription: 'S.T.A.L.K.E.R. 2: Heart of Chornobyl — долгожданное продолжение легендарной серии игр о Зоне отчуждения. Игрокам предстоит исследовать огромный открытый мир, полный аномалий, мутантов и других сталкеров. Нелинейный сюжет, система A-Life 2.0 и уникальная атмосфера создают непередаваемое чувство присутствия в опасной и загадочной Зоне.',
+    developer: 'GSC Game World',
+    releaseDate: '20.11.2024',
+    screenshots: [
+      'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800&h=450&fit=crop'
+    ],
     rating: 4.7
   },
   {
@@ -95,6 +163,14 @@ const GAMES: Game[] = [
     genre: 'Песочница',
     image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&h=300&fit=crop',
     description: 'Строй и исследуй мир',
+    fullDescription: 'Minecraft — культовая игра-песочница, где игроки могут строить и исследовать бесконечные процедурно генерируемые миры из блоков. Режим выживания предлагает добывать ресурсы и защищаться от монстров, а творческий режим дает безграничные возможности для строительства. Миллионы игроков по всему миру создают удивительные постройки и делятся своими творениями.',
+    developer: 'Mojang Studios',
+    releaseDate: '18.11.2011',
+    screenshots: [
+      'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?w=800&h=450&fit=crop'
+    ],
     rating: 4.9
   },
   {
@@ -103,6 +179,14 @@ const GAMES: Game[] = [
     genre: 'Экшен',
     image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=300&fit=crop',
     description: 'Открытый мир криминала',
+    fullDescription: 'Grand Theft Auto V — культовая игра в открытом мире от Rockstar Games, действие которой разворачивается в вымышленном штате Сан-Андреас. Игроки управляют тремя главными героями с уникальными историями и способностями, совершая дерзкие ограбления и исследуя огромный мир. Многопользовательский режим GTA Online предлагает бесконечные возможности для развлечений с друзьями.',
+    developer: 'Rockstar Games',
+    releaseDate: '17.09.2013',
+    screenshots: [
+      'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=450&fit=crop'
+    ],
     rating: 4.8
   },
   {
@@ -111,6 +195,14 @@ const GAMES: Game[] = [
     genre: 'MOBA',
     image: 'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&h=300&fit=crop',
     description: 'Соревновательная арена сражений',
+    fullDescription: 'League of Legends — самая популярная MOBA-игра в мире с многомиллионной аудиторией и развитой киберспортивной сценой. Две команды по пять игроков выбирают уникальных чемпионов и сражаются за разрушение базы противника. Постоянные обновления, новые чемпионы и сезонные изменения делают игру свежей и увлекательной на протяжении многих лет.',
+    developer: 'Riot Games',
+    releaseDate: '27.10.2009',
+    screenshots: [
+      'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&h=450&fit=crop',
+      'https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?w=800&h=450&fit=crop'
+    ],
     rating: 4.7
   },
   {
