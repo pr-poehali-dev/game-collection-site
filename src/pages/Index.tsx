@@ -164,15 +164,31 @@ interface User {
 }
 
 export default function Index() {
-  const [selectedGenre, setSelectedGenre] = useState('All');
+  const [selectedGenre, setSelectedGenre] = useState('Все');
   const [searchQuery, setSearchQuery] = useState('');
   const [authDialogOpen, setAuthDialogOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+  const [favorites, setFavorites] = useState<number[]>(() => {
+    const saved = localStorage.getItem('favorites');
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+
+  const toggleFavorite = (gameId: number) => {
+    setFavorites(prev => {
+      const newFavorites = prev.includes(gameId)
+        ? prev.filter(id => id !== gameId)
+        : [...prev, gameId];
+      localStorage.setItem('favorites', JSON.stringify(newFavorites));
+      return newFavorites;
+    });
+  };
 
   const filteredGames = GAMES.filter(game => {
     const matchesGenre = selectedGenre === 'Все' || game.genre === selectedGenre;
     const matchesSearch = game.title.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesGenre && matchesSearch;
+    const matchesFavorites = !showFavoritesOnly || favorites.includes(game.id);
+    return matchesGenre && matchesSearch && matchesFavorites;
   });
 
   return (
@@ -208,9 +224,12 @@ export default function Index() {
                     <Icon name="User" size={16} className="mr-2" />
                     Профиль
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="cursor-pointer hover:bg-primary/10">
+                  <DropdownMenuItem 
+                    className="cursor-pointer hover:bg-primary/10"
+                    onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+                  >
                     <Icon name="Heart" size={16} className="mr-2" />
-                    Избранное
+                    {showFavoritesOnly ? 'Все игры' : 'Избранное'}
                   </DropdownMenuItem>
                   <DropdownMenuItem className="cursor-pointer hover:bg-primary/10">
                     <Icon name="Settings" size={16} className="mr-2" />
@@ -266,10 +285,21 @@ export default function Index() {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        <div className="mb-6">
+        <div className="mb-6 flex items-center justify-between">
           <p className="text-muted-foreground">
-            Найдено игр: <span className="text-primary font-semibold">{filteredGames.length}</span>
+            {showFavoritesOnly ? 'Избранные игры' : 'Найдено игр'}: <span className="text-primary font-semibold">{filteredGames.length}</span>
           </p>
+          {favorites.length > 0 && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+              className="gap-2"
+            >
+              <Icon name="Heart" size={16} className={showFavoritesOnly ? 'fill-current text-primary' : ''} />
+              {showFavoritesOnly ? 'Показать все' : `Избранное (${favorites.length})`}
+            </Button>
+          )}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -284,7 +314,24 @@ export default function Index() {
                   alt={game.title} 
                   className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-                <div className="absolute top-2 right-2">
+                <div className="absolute top-2 right-2 flex gap-2">
+                  <Button
+                    size="sm"
+                    variant="secondary"
+                    className={`h-8 w-8 p-0 bg-background/80 backdrop-blur hover:bg-primary/20 ${
+                      favorites.includes(game.id) ? 'text-primary' : ''
+                    }`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFavorite(game.id);
+                    }}
+                  >
+                    <Icon 
+                      name={favorites.includes(game.id) ? "Heart" : "Heart"} 
+                      size={16}
+                      className={favorites.includes(game.id) ? 'fill-current' : ''}
+                    />
+                  </Button>
                   <Badge variant="secondary" className="bg-background/80 backdrop-blur">
                     <Icon name="Star" size={14} className="text-primary mr-1" />
                     {game.rating}
