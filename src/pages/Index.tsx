@@ -103,7 +103,7 @@ export default function Index() {
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
               <Icon name="Gamepad2" size={32} className="text-primary" />
-              <h1 className="text-3xl font-bold text-foreground">GameHub</h1>
+              <h1 className="text-3xl font-bold text-foreground">QatroStudio</h1>
             </div>
             <Button
               onClick={() => setAuthDialogOpen(true)}
