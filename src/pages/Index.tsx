@@ -5,6 +5,15 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import AuthDialog from '@/components/AuthDialog';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 interface Game {
   id: number;
@@ -84,11 +93,17 @@ const GAMES: Game[] = [
 
 const GENRES = ['All', 'Action', 'RPG', 'Strategy', 'Puzzle'];
 
+interface User {
+  name: string;
+  email: string;
+  avatar: string;
+}
+
 export default function Index() {
   const [selectedGenre, setSelectedGenre] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [authDialogOpen, setAuthDialogOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
 
   const filteredGames = GAMES.filter(game => {
     const matchesGenre = selectedGenre === 'All' || game.genre === selectedGenre;
@@ -105,13 +120,57 @@ export default function Index() {
               <Icon name="Gamepad2" size={32} className="text-primary" />
               <h1 className="text-3xl font-bold text-foreground">QatroStudio</h1>
             </div>
-            <Button
-              onClick={() => setAuthDialogOpen(true)}
-              className="flex items-center gap-2"
-            >
-              <Icon name="User" size={18} />
-              Вход
-            </Button>
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="flex items-center gap-3 h-auto py-2 px-3 hover:bg-primary/10">
+                    <Avatar className="h-10 w-10 border-2 border-primary">
+                      <AvatarImage src={user.avatar} alt={user.name} />
+                      <AvatarFallback className="bg-primary text-primary-foreground">
+                        {user.name.charAt(0).toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="text-left hidden sm:block">
+                      <p className="text-sm font-semibold text-foreground">{user.name}</p>
+                      <p className="text-xs text-muted-foreground">{user.email}</p>
+                    </div>
+                    <Icon name="ChevronDown" size={16} className="text-muted-foreground" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56 bg-card border-border">
+                  <DropdownMenuLabel className="text-foreground">Мой профиль</DropdownMenuLabel>
+                  <DropdownMenuSeparator className="bg-border" />
+                  <DropdownMenuItem className="cursor-pointer hover:bg-primary/10">
+                    <Icon name="User" size={16} className="mr-2" />
+                    Профиль
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer hover:bg-primary/10">
+                    <Icon name="Heart" size={16} className="mr-2" />
+                    Избранное
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer hover:bg-primary/10">
+                    <Icon name="Settings" size={16} className="mr-2" />
+                    Настройки
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator className="bg-border" />
+                  <DropdownMenuItem 
+                    className="cursor-pointer hover:bg-destructive/10 text-destructive"
+                    onClick={() => setUser(null)}
+                  >
+                    <Icon name="LogOut" size={16} className="mr-2" />
+                    Выйти
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Button
+                onClick={() => setAuthDialogOpen(true)}
+                className="flex items-center gap-2"
+              >
+                <Icon name="User" size={18} />
+                Вход
+              </Button>
+            )}
           </div>
 
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
@@ -203,7 +262,11 @@ export default function Index() {
         )}
       </main>
 
-      <AuthDialog open={authDialogOpen} onOpenChange={setAuthDialogOpen} />
+      <AuthDialog 
+        open={authDialogOpen} 
+        onOpenChange={setAuthDialogOpen}
+        onAuthSuccess={setUser}
+      />
     </div>
   );
 }

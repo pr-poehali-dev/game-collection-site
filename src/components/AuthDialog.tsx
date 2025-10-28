@@ -13,13 +13,36 @@ import Icon from '@/components/ui/icon';
 interface AuthDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onAuthSuccess?: (user: { name: string; email: string; avatar: string }) => void;
 }
 
-export default function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
+export default function AuthDialog({ open, onOpenChange, onAuthSuccess }: AuthDialogProps) {
   const [isLogin, setIsLogin] = useState(true);
 
   const handleSocialAuth = (provider: string) => {
-    console.log(`Auth with ${provider}`);
+    const mockUsers = {
+      vk: {
+        name: 'Иван Иванов',
+        email: 'ivan@vk.com',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop'
+      },
+      yandex: {
+        name: 'Мария Петрова',
+        email: 'maria@yandex.ru',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop'
+      },
+      telegram: {
+        name: 'Алексей Смирнов',
+        email: 'alexey@telegram.org',
+        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop'
+      }
+    };
+
+    const user = mockUsers[provider as keyof typeof mockUsers];
+    if (user && onAuthSuccess) {
+      onAuthSuccess(user);
+      onOpenChange(false);
+    }
   };
 
   return (
