@@ -27,71 +27,135 @@ interface Game {
 const GAMES: Game[] = [
   {
     id: 1,
-    title: 'Cyber Warriors',
-    genre: 'Action',
+    title: 'Counter-Strike 2',
+    genre: 'Шутер',
     image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&h=300&fit=crop',
-    description: 'Intense futuristic combat',
-    rating: 4.8
-  },
-  {
-    id: 2,
-    title: 'Dragon Quest',
-    genre: 'RPG',
-    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop',
-    description: 'Epic fantasy adventure',
+    description: 'Легендарный тактический шутер',
     rating: 4.9
   },
   {
+    id: 2,
+    title: 'Dota 2',
+    genre: 'MOBA',
+    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop',
+    description: 'Командная стратегия в реальном времени',
+    rating: 4.8
+  },
+  {
     id: 3,
-    title: 'Empire Builder',
-    genre: 'Strategy',
+    title: 'World of Tanks',
+    genre: 'Экшен',
     image: 'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&h=300&fit=crop',
-    description: 'Build your civilization',
+    description: 'Массовые танковые сражения',
     rating: 4.7
   },
   {
     id: 4,
-    title: 'Mind Maze',
-    genre: 'Puzzle',
-    image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&h=300&fit=crop',
-    description: 'Challenge your brain',
+    title: 'Escape from Tarkov',
+    genre: 'Шутер',
+    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=300&fit=crop',
+    description: 'Хардкорный тактический шутер',
     rating: 4.6
   },
   {
     id: 5,
-    title: 'Street Fighter X',
-    genre: 'Action',
-    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=300&fit=crop',
-    description: 'Ultimate fighting game',
-    rating: 4.8
-  },
-  {
-    id: 6,
-    title: 'Kingdom Legends',
-    genre: 'RPG',
-    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&h=300&fit=crop',
-    description: 'Medieval fantasy world',
-    rating: 4.9
-  },
-  {
-    id: 7,
-    title: 'War Commander',
-    genre: 'Strategy',
+    title: 'War Thunder',
+    genre: 'Симулятор',
     image: 'https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?w=400&h=300&fit=crop',
-    description: 'Real-time strategy battles',
+    description: 'Военная авиация и танки',
     rating: 4.5
   },
   {
+    id: 6,
+    title: 'Metro Exodus',
+    genre: 'RPG',
+    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&h=300&fit=crop',
+    description: 'Постапокалиптическое приключение',
+    rating: 4.8
+  },
+  {
+    id: 7,
+    title: 'Atomic Heart',
+    genre: 'Экшен',
+    image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&h=300&fit=crop',
+    description: 'Альтернативная история СССР',
+    rating: 4.4
+  },
+  {
     id: 8,
-    title: 'Cube Master',
-    genre: 'Puzzle',
-    image: 'https://images.unsplash.com/photo-1611329532992-7dfbd8d0e5a0?w=400&h=300&fit=crop',
-    description: 'Solve complex puzzles',
+    title: 'Stalker 2',
+    genre: 'RPG',
+    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop',
+    description: 'Выживание в Зоне',
     rating: 4.7
+  },
+  {
+    id: 9,
+    title: 'Minecraft',
+    genre: 'Песочница',
+    image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&h=300&fit=crop',
+    description: 'Строй и исследуй мир',
+    rating: 4.9
+  },
+  {
+    id: 10,
+    title: 'GTA V',
+    genre: 'Экшен',
+    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=300&fit=crop',
+    description: 'Открытый мир криминала',
+    rating: 4.8
+  },
+  {
+    id: 11,
+    title: 'League of Legends',
+    genre: 'MOBA',
+    image: 'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&h=300&fit=crop',
+    description: 'Соревновательная арена сражений',
+    rating: 4.7
+  },
+  {
+    id: 12,
+    title: 'Valorant',
+    genre: 'Шутер',
+    image: 'https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?w=400&h=300&fit=crop',
+    description: 'Тактический 5v5 шутер',
+    rating: 4.6
+  },
+  {
+    id: 13,
+    title: 'Tetris',
+    genre: 'Головоломка',
+    image: 'https://images.unsplash.com/photo-1611329532992-7dfbd8d0e5a0?w=400&h=300&fit=crop',
+    description: 'Классическая головоломка',
+    rating: 4.9
+  },
+  {
+    id: 14,
+    title: 'World of Warcraft',
+    genre: 'MMORPG',
+    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&h=300&fit=crop',
+    description: 'Легендарная онлайн RPG',
+    rating: 4.5
+  },
+  {
+    id: 15,
+    title: 'Fortnite',
+    genre: 'Экшен',
+    image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&h=300&fit=crop',
+    description: 'Королевская битва',
+    rating: 4.4
+  },
+  {
+    id: 16,
+    title: 'Cyberpunk 2077',
+    genre: 'RPG',
+    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop',
+    description: 'Будущее найт-сити',
+    rating: 4.3
   }
 ];
 
-const GENRES = ['All', 'Action', 'RPG', 'Strategy', 'Puzzle'];
+const GENRES = ['Все', 'Шутер', 'RPG', 'Экшен', 'MOBA', 'Головоломка', 'Симулятор', 'Песочница', 'MMORPG'];
 
 interface User {
   name: string;
@@ -106,7 +170,7 @@ export default function Index() {
   const [user, setUser] = useState<User | null>(null);
 
   const filteredGames = GAMES.filter(game => {
-    const matchesGenre = selectedGenre === 'All' || game.genre === selectedGenre;
+    const matchesGenre = selectedGenre === 'Все' || game.genre === selectedGenre;
     const matchesSearch = game.title.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesGenre && matchesSearch;
   });
