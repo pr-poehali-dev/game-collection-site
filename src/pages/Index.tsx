@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import AuthDialog from '@/components/AuthDialog';
 
 interface Game {
   id: number;
@@ -86,6 +87,8 @@ const GENRES = ['All', 'Action', 'RPG', 'Strategy', 'Puzzle'];
 export default function Index() {
   const [selectedGenre, setSelectedGenre] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [authDialogOpen, setAuthDialogOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const filteredGames = GAMES.filter(game => {
     const matchesGenre = selectedGenre === 'All' || game.genre === selectedGenre;
@@ -97,9 +100,18 @@ export default function Index() {
     <div className="min-h-screen bg-background">
       <header className="border-b border-border">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center gap-3 mb-8">
-            <Icon name="Gamepad2" size={32} className="text-primary" />
-            <h1 className="text-3xl font-bold text-foreground">GameHub</h1>
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-3">
+              <Icon name="Gamepad2" size={32} className="text-primary" />
+              <h1 className="text-3xl font-bold text-foreground">GameHub</h1>
+            </div>
+            <Button
+              onClick={() => setAuthDialogOpen(true)}
+              className="flex items-center gap-2"
+            >
+              <Icon name="User" size={18} />
+              Вход
+            </Button>
           </div>
 
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
@@ -190,6 +202,8 @@ export default function Index() {
           </div>
         )}
       </main>
+
+      <AuthDialog open={authDialogOpen} onOpenChange={setAuthDialogOpen} />
     </div>
   );
 }
