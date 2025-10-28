@@ -442,14 +442,10 @@ export default function Index() {
                   {game.description}
                 </p>
                 
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-start">
                   <Badge variant="outline" className="border-primary text-primary">
                     {game.genre}
                   </Badge>
-                  <Button size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground">
-                    <Icon name="Play" size={16} className="mr-1" />
-                    Играть
-                  </Button>
                 </div>
               </div>
             </Card>
